@@ -1,4 +1,8 @@
 import Data.List
+-- 
+-- First Part Basics
+-- 
+
 precedes :: String -> String -> Bool
 precedes ns ms = ns <= ms
 
@@ -39,14 +43,37 @@ ints n
       | k > n = []
       | otherwise = k : ints' (k+1)
 
+-- 
+-- Second Part List Comprehension
+-- 
+
+-- question 1
+findAll :: Int -> [(Int, Int)] -> [Int]
+findAll x t  = [y' | (x',y') <- t, x' == x]
+
+-- question 2
+
+-- question 3
+remove :: Eq a => a -> [(a,b)] -> [(a,b)]
+remove x tables = [(x',y') | (x',y') <- tables, x' /= x]
+
+remove' :: Eq a => a -> [(a,b)] -> [(a,b)]
+remove' x tables = error "further work is needed to complete this function"
+
+
+  
 -- question 6
+-- not a very good implementation
 prefixes :: [t] -> [[t]]
-prefixes [] = []
-prefixes (x:xs) = addElem x (prefixes xs)
+prefixes ls = reverse (prefixes' ls)
   where
     addElem :: a ->[[a]]->[[a]]
     addElem x [] = [[x]]
     addElem x (y:ys) = (x:y):addElem x ys
+    prefixes' :: [t] -> [[t]]
+    prefixes' [] = []
+    prefixes' (x:xs) = addElem x (prefixes' xs)
+
 
 -- question 8
 subString :: String -> [String]
