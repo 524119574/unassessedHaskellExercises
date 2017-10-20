@@ -29,3 +29,4 @@ revAll' ls
 dezip :: [(a,b)] -> ([a],[b])
 dezip ls
   = (map fst ls, map snd ls)
+

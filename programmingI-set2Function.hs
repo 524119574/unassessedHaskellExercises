@@ -73,11 +73,29 @@ larger n m
 
 -- 15
 fib :: Int -> Int
-fib 0 = 0
-fib 1 = 1
-fib n
-  | n > 1 = fib (n-1) + fib (n-2)
+-- fib 0 = 0
+-- fib 1 = 1
+-- fib n
+--   | n > 1 = fib (n-1) + fib (n-2)
 
+fib index
+  = fib' 0 1 index
+  where
+    fib' :: Int -> Int -> Int -> Int
+    fib' f' f'' 0 = f'
+    fib' f' f'' index = fib' (f'+f'') f' (index-1) 
+
+
+-- another implementation
+fib' :: Int -> Integer
+fib' 0 = 0
+fib' 1 = 1
+fib' n
+  = (fibs !! (n-1)) + (fibs !! (n-2))
+
+fibs :: [Integer]
+fibs
+  = map fib' [0..]
 -- draft
 isADigit :: Char -> Bool
 isADigit c = c >= '0' && c <= '9'
