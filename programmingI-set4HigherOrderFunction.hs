@@ -52,3 +52,5 @@ factorialList'
 e :: Double
 e
   = sum (map ((/) 1) factorialList')
+
+-- let xs = 1 : scanl (+) 1 xs in xs
